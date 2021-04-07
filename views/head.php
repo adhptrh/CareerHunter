@@ -55,7 +55,7 @@ if (isset($_SESSION["id"])) {
                                 ' . $user["nama"] . '
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Edit Profil</a></li>
+                                <li><a class="dropdown-item" href="editprofil">Edit Profil</a></li>
                                 <li><a class="dropdown-item" href="actions/logout">Keluar</a></li>
                             </ul>
                         </div>';
@@ -67,7 +67,7 @@ if (isset($_SESSION["id"])) {
                                 ' . $user["username"] . '
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Edit Profil</a></li>
+                                <li><a class="dropdown-item" href="editprofil">Edit Profil</a></li>
                                 <li><a class="dropdown-item" href="actions/logout">Keluar</a></li>
                             </ul>
                         </div>';
@@ -79,7 +79,7 @@ if (isset($_SESSION["id"])) {
                                 ' . $user["username"] . '
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Edit Profil</a></li>
+                                <li><a class="dropdown-item" href="perusahaan_approval">User Perusahaan Approval</a></li>
                                 <li><a class="dropdown-item" href="actions/logout">Keluar</a></li>
                             </ul>
                         </div>';

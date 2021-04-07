@@ -28,6 +28,7 @@ $user->password = $_POST["password"];
 $user->email = $_POST["email"];
 $user->notelp = $_POST["notelp"];
 $user->nama = $_POST["nama"];
+$user->foto = "default.png";
 $id = $user->register();
 
 

@@ -1,4 +1,5 @@
 <?php
+require "conn.php";
 session_start();
 $title = "Register";
 $appname = "CareerHunter";

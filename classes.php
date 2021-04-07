@@ -15,7 +15,7 @@ class User extends PrepareQuery
     public 
     $id,$username,$password,$nama,$email,$notelp,
     $kelamin,$tentang,$edukasi,$pengalamankerja,
-    $skill,$resume,$pengalamanorganisasi,$foto;
+    $skill,$resume,$pengalamanorganisasi,$foto,$lahir;
 
     private $table = "user";
 
@@ -34,6 +34,34 @@ class User extends PrepareQuery
     {
         $q = $this->conn->query("SELECT * FROM $this->table WHERE id = $id");
         return $q;
+    }
+
+    function uploadFoto($foto)
+    {
+        $foto_path = strval(rand(0,1000000)).$foto["name"];
+        move_uploaded_file($foto["tmp_name"],"../foto/foto_profil/$foto_path");
+        $this->foto = $foto_path;
+    }
+
+    function uploadResume($foto)
+    {
+        $foto_path = strval(rand(0,1000000)).$foto["name"];
+        move_uploaded_file($foto["tmp_name"],"../foto/foto_resume/$foto_path");
+        $this->resume = $foto_path;
+    }
+
+    function update()
+    {
+        $q = $this->prepare(
+            "UPDATE $this->table SET username=?,password=?,nama=?,email=?,notelp=?,kelamin=?,tentang=?,edukasi=?,pengalamankerja=?,skill=?,resume=?,pengalamanorganisasi=?,foto=?,lahir=? WHERE id = ?",
+            "ssssssssssssssi",
+            $this->username,$this->password,$this->nama,$this->email,$this->notelp,$this->kelamin,
+            $this->tentang,$this->edukasi,$this->pengalamankerja,$this->skill,$this->resume,
+            $this->pengalamanorganisasi,$this->foto,$this->lahir,$this->id
+
+        );
+
+        $q->execute();
     }
 
     function register()
