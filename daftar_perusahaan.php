@@ -3,6 +3,10 @@ require "conn.php";
 session_start();
 $title = "Register";
 $appname = "CareerHunter";
+
+require "checkuser.php";
+
+
 require "views/head.php";
 ?>
 

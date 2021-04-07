@@ -4,6 +4,8 @@ session_start();
 $title = "Edit Profil";
 $appname = "CareerHunter";
 
+require "checkuser.php";
+
 require "views/head.php";
 
 if (isset($_SESSION["id"]))

@@ -4,6 +4,9 @@ session_start();
 $title = "Login";
 $appname = "CareerHunter";
 
+require "checkuser.php";
+
+
 require "views/head.php";
 ?>
 

@@ -97,7 +97,7 @@ class UserPerusahaan extends PrepareQuery
     public 
     $id,$nama,$email,$nomor,$nama_penanggung_jawab,
     $nomor_penanggung_jawab,$username,$password,
-    $akta_pendirian_usaha;
+    $akta_pendirian_usaha,$foto;
 
     private $table = "user_perusahaan";
     
@@ -116,6 +116,19 @@ class UserPerusahaan extends PrepareQuery
     {
         $q = $this->conn->query("SELECT * FROM $this->table WHERE id = $id");
         return $q;
+    }
+
+    function update()
+    {
+        $q = $this->prepare(
+            "UPDATE $this->table SET username=?,password=?,nama=?,email=?,nomor_penanggung_jawab=?,nama_penanggung_jawab=?,foto=? WHERE id = ?",
+            "sssssssi",
+            $this->username,$this->password,$this->nama,$this->email,$this->nomor_penanggung_jawab,
+            $this->nama_penanggung_jawab,$this->foto,$this->id
+
+        );
+
+        $q->execute();
     }
 
     function login()
@@ -137,6 +150,13 @@ class UserPerusahaan extends PrepareQuery
         $foto_path = strval(rand(0,1000000)).$foto["name"];
         move_uploaded_file($foto["tmp_name"],"../foto/akta_pendirian_usaha/$foto_path");
         $this->akta_pendirian_usaha = $foto_path;
+    }
+
+    function uploadFotoProfil($foto)
+    {
+        $foto_path = strval(rand(0,1000000)).$foto["name"];
+        move_uploaded_file($foto["tmp_name"],"../foto/foto_profil/$foto_path");
+        $this->foto = $foto_path;
     }
 
     function register()

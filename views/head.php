@@ -1,21 +1,5 @@
 <?php
 
-$user = null;
-
-if (isset($_SESSION["id"])) {
-    if ($_SESSION["role"] == Role::$user) {
-        $userr = new User($conn);
-        $user = $userr->selectDataById($_SESSION["id"])->fetch_assoc();
-    }
-    if ($_SESSION["role"] == Role::$user_perusahaan) {
-        $userr = new UserPerusahaan($conn);
-        $user = $userr->selectDataById($_SESSION["id"])->fetch_assoc();
-    }
-    if ($_SESSION["role"] == Role::$admin) {
-        $userr = new Admin($conn);
-        $user = $userr->selectDataById($_SESSION["id"])->fetch_assoc();
-    }
-}
 
 ?>
 
@@ -50,7 +34,7 @@ if (isset($_SESSION["id"])) {
                     if (isset($_SESSION["id"])) {
                         if ($_SESSION["role"] == Role::$user) {
 
-                            echo '<div class="btn-group">
+                            echo '<div class="btn-group dropstart">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 ' . $user["nama"] . '
                             </button>
@@ -62,7 +46,7 @@ if (isset($_SESSION["id"])) {
                         }
                         if ($_SESSION["role"] == Role::$user_perusahaan) {
 
-                            echo '<div class="btn-group">
+                            echo '<div class="btn-group dropstart">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 ' . $user["username"] . '
                             </button>
@@ -74,7 +58,7 @@ if (isset($_SESSION["id"])) {
                         }
                         if ($_SESSION["role"] == Role::$admin) {
 
-                            echo '<div class="btn-group">
+                            echo '<div class="btn-group dropstart">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 ' . $user["username"] . '
                             </button>

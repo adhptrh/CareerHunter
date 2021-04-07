@@ -3,7 +3,11 @@ require "conn.php";
 session_start();
 $title = "Register";
 $appname = "CareerHunter";
+
+require "checkuser.php";
+
 require "views/head.php";
+
 ?>
 
 <div class="container mt-5 rounded px-5">
